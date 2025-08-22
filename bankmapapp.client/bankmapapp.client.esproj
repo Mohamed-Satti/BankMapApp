@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196">
+  <PropertyGroup>
+    <StartupCommand>npm start</StartupCommand>
+    <JavaScriptTestFramework>Jasmine</JavaScriptTestFramework>
+    <!-- Allows the build (or compile) script located on package.json to run on Build -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <!-- Folder where production build objects will be placed -->
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\bankmapapp.client\browser\</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\app\dashboard-panels\user-panel\" />
+    <Folder Include="src\app\features\poi\poi-edit\" />
+    <Folder Include="src\app\features\poi\poi-create\" />
+    <Folder Include="src\app\features\user\" />
+    <Folder Include="src\app\Shared\components\header\" />
+  </ItemGroup>
+</Project>

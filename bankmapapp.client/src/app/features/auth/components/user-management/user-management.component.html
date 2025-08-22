@@ -1,0 +1,16 @@
+<div class="user-management-container">
+    <h2>User Management</h2>
+    <div class="user-list">
+        <div *ngFor="let user of users" class="user-card">
+            <div class="user-details">
+                <h3>{{ user.name }}</h3>
+                <p>Email: {{ user.email }}</p>
+                <p>Role: <strong>{{ user.role }}</strong></p>
+            </div>
+            <button class="delete-button" (click)="deleteUser(user.id)">Delete</button>
+        </div>
+        <div *ngIf="users.length === 0" class="no-users-message">
+            No users found.
+        </div>
+    </div>
+</div>

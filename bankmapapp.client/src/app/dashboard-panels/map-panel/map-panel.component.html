@@ -1,0 +1,47 @@
+<div class="map-controls">
+  <form [formGroup]="poiForm" class="poi-form">
+    <label>
+      Shape:
+      <select formControlName="shape" (change)="onShapeChange($event)">
+        <option value="Point">Point</option>
+        <option value="LineString">Line</option>
+        <option value="Polygon">Polygon</option>
+      </select>
+    </label>
+
+    <label>
+      Name:
+      <input type="text" formControlName="name" />
+    </label>
+
+    <label>
+      Type:
+      <input type="text" formControlName="type" />
+    </label>
+
+    <button type="button" (click)="deleteSelected()">Delete Selected</button>
+  </form>
+</div>
+<div id="map" class="map"></div>
+
+
+<!--<header class="controls-header">
+  <form (ngSubmit)="onSubmit()">
+    <label>Shape:</label>
+    <select [(ngModel)]="shape" name="shape">
+      <option>Point</option>
+      <option>Polygon</option>
+    </select>
+
+    <label>Name:</label>
+    <input [(ngModel)]="name" name="name" />
+
+    <label>Type:</label>
+    <input [(ngModel)]="type" name="type" />
+
+    <button type="submit">Add</button>
+    <button type="button" (click)="deleteSelected()">Delete Selected</button>
+  </form>
+</header>-->
+
+

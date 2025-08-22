@@ -1,0 +1,6 @@
+@BankMapApp.Server_HostAddress = http://localhost:5069
+
+GET {{BankMapApp.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
