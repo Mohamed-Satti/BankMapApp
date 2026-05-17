@@ -22,10 +22,7 @@ public class UsersController : ControllerBase
     // GET: api/users/{id}
     [HttpGet("{id}")]
 
-    //Check them later
-    //[SwaggerOperation(OperationId = "GetUserById", Tags = new[] { "Users" })]
-    //[SwaggerResponse(200, "Success", typeof(User))]
-    //[SwaggerResponse(404, "Not Found")]
+
     public async Task<IActionResult> GetUserById(Guid id)
     {
         var user = await _context.Users.FindAsync(id);
@@ -37,32 +34,3 @@ public class UsersController : ControllerBase
 
     //ADD more endpoints for updating (POST), and deleting users (DELETE)
 }
-
-//IntelliSense VERSION (better (uses a service) for future)
-//public class UsersController : ControllerBase
-//{
-//    private readonly IUserService _userService;
-//    public UsersController(IUserService userService)
-//    {
-//        _userService = userService;
-//    }
-//    // GET: api/users
-//    [HttpGet]
-//    public async Task<IActionResult> GetAllUsers()
-//    {
-//        var users = await _userService.GetAllUsersAsync();
-//        return Ok(users);
-//    }
-//    // GET: api/users/{id}
-//    [HttpGet("{id}")]
-//    public async Task<IActionResult> GetUserById(Guid id)
-//    {
-//        var user = await _userService.GetUserByIdAsync(id);
-//        if (user == null) return NotFound();
-//        return Ok(user);
-//    }
-
-
-
-
-//}

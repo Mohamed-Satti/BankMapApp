@@ -1,105 +1,9 @@
 <div id="fullscreen" class="fullscreen">
-  <!--<div class="flex flex-col h-screen font-sans bg-gray-100">
-    <div class=" "> </div>
-    <div class="relative flex-grow flex">
-
-      <div class="absolute inset-y-0 left-0 z-10 p-4 space-y-4 flex flex-col items-start bg-white bg-opacity-90 rounded-r-lg shadow-md transition-all duration-300">
-
-        <div class="bg-gray-200 p-2 rounded-lg shadow-inner flex flex-col space-y-2">
-          <h3 class="font-bold text-gray-700 text-sm mb-1">Drawing Tools</h3>
-          <div class="flex space-x-2">
-            <button class="px-3 py-2 text-sm font-medium text-white rounded-lg transition-colors"
-                    [ngClass]="{'bg-blue-600 hover:bg-blue-700': currentDrawType === 'Point', 'bg-gray-500 hover:bg-gray-600': currentDrawType !== 'Point'}"
-                    (click)="onDrawTypeChange('Point')">
-              Point
-            </button>
-            <button class="px-3 py-2 text-sm font-medium text-white rounded-lg transition-colors"
-                    [ngClass]="{'bg-blue-600 hover:bg-blue-700': currentDrawType === 'LineString', 'bg-gray-500 hover:bg-gray-600': currentDrawType !== 'LineString'}"
-                    (click)="onDrawTypeChange('LineString')">
-              Line
-            </button>
-            <button class="px-3 py-2 text-sm font-medium text-white rounded-lg transition-colors"
-                    [ngClass]="{'bg-blue-600 hover:bg-blue-700': currentDrawType === 'Polygon', 'bg-gray-500 hover:bg-gray-600': currentDrawType !== 'Polygon'}"
-                    (click)="onDrawTypeChange('Polygon')">
-              Polygon
-            </button>
-          </div>
-        </div>
-
-        <div class="w-full">
-          <app-poi-list [pois]="pois"
-                        [visiblePois]="visiblePoiIds"
-                        (toggleVisibilityEvent)="onToggleVisibility($event)"
-                        (editEvent)="onEditPoi($event)"
-                        (deleteEvent)="onDeletePoi($event)">
-          </app-poi-list>
-        </div>
-
-      </div>
-
-      <div id="map" class="flex-grow"></div>
-
-      <div #popup class="ol-popup" *ngIf="selectedPoi" [style.left.px]="popupPosition[0]" [style.top.px]="popupPosition[1]">
-        <a href="#" id="ol-popup-closer" class="ol-popup-closer" (click)="onClosePopup()">&times;</a>
-        <div id="ol-popup-content" class="ol-popup-content">
-          <div class="popup-header">
-            <h3 class="font-semibold">{{ selectedPoi.Name }}</h3>
-            <p class="text-xs text-gray-500">{{ selectedPoi.Type }}</p>
-          </div>
-          <div class="popup-body">
-            <p class="text-sm"><strong>ID:</strong> {{ selectedPoi.Id }}</p>
-            <p class="text-sm"><strong>User ID:</strong> {{ selectedPoi.UserId }}</p>
-            <p class="text-sm"><strong>Description:</strong> {{ selectedPoi.Data?.description }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center z-50">
-      <div class="bg-white p-8 rounded-lg shadow-xl w-96">
-        <h2 class="text-xl font-bold mb-4 text-gray-800">{{ isEditing ? 'Edit POI Details' : 'Add POI Details' }}</h2>
-        <form (ngSubmit)="onSavePoi()">
-          <div class="mb-4">
-            <label for="poiName" class="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" id="poiName" [(ngModel)]="poiForm.name" name="name" required
-                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-          </div>
-          <div class="mb-4">
-            <label for="poiDescription" class="block text-sm font-medium text-gray-700">Description</label>
-            <textarea id="poiDescription" [(ngModel)]="poiForm.description" name="description"
-                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-          </div>
-
-          <div *ngIf="isAdmin" class="flex items-center mb-4">
-            <input type="checkbox" id="isPublic" [(ngModel)]="poiForm.isPublic" name="isPublic"
-                   class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-            <label for="isPublic" class="ml-2 block text-sm text-gray-900">
-              Make it public
-            </label>
-          </div>
-
-          <div class="flex justify-end space-x-4">
-            <button type="button" (click)="onCancelModal()"
-                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
-              Cancel
-            </button>
-            <button type="submit"
-                    class="px-4 py-2 text-sm font-medium text-white rounded-md"
-                    [ngClass]="{'bg-green-600 hover:bg-green-700': !isEditing, 'bg-blue-600 hover:bg-blue-700': isEditing}">
-              {{ isEditing ? 'Update POI' : 'Save POI' }}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>-->
-  <!--</div>-->
-
-
   <div class="map-container">
+    <div id="map" class="map-view"></div>
     
-  <div id="map" class="map-view"></div>
-   Panel for drawing controls 
-  <div class="controls-panel">
+    <!-- Panel for drawing controls -->
+    <div class="controls-panel">
       <div class="draw-controls">
         <button (click)="onDrawTypeChange('Point')"
                 [class.active]="currentDrawType === 'Point'">
@@ -117,37 +21,6 @@
       <button class="logout-button" (click)="onLogout()">Logout</button>
     </div>
   </div>
-
 </div>
 
-  <!--<div class="map-controls">
-    <form [formGroup]="poiForm" class="poi-form">
-      <label>
-        Shape:
-        <select formControlName="shape" (change)="onShapeChange($event)">
-          <option value="Point">Point</option>
-          <option value="LineString">Line</option>
-          <option value="Polygon">Polygon</option>
-        </select>
-      </label>
-
-      <label>
-        Name:
-        <input type="text" formControlName="name" />
-      </label>
-
-      <label>
-        Type:
-        <input type="text" formControlName="type" />
-      </label>
-
-      <button type="button" (click)="deleteSelected()">Delete Selected</button>
-    </form>
-  </div>
-  <div id="map" class="map"></div>-->
-  <!-- map.component.html -->
-  <!--<p></p>
-
-  <div #mapElement class="map-container"></div>-->
-
-  <p>BankMapApp - 2025</p>
+<p>BankMapApp - 2025</p>
